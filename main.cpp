@@ -14,7 +14,7 @@ void waitUntilKeyPressed();
 void updateBird(SDL_Renderer* &renderer, SDL_Rect* &bird, const int GRAVITY);
 void updateRenderer(SDL_Renderer* &renderer);
 void updatePipe(SDL_Renderer* &renderer, Pipeline &pipe, const int velocity);
-
+bool hitThePipes(const SDL_Rect* bird,const Pipeline pipe);
 
 int main(int argc, char* argv[])
 {
@@ -22,6 +22,8 @@ int main(int argc, char* argv[])
     SDL_Window* window;
     SDL_Renderer* renderer;
     initSDL(window, renderer);
+//    int a = 1;
+//    cout << a;
 
     // Your drawing code here
     SDL_Rect* bird;
@@ -36,9 +38,11 @@ int main(int argc, char* argv[])
     pipes[2] = new Pipeline;
     int velocity = 3;
 
-    while (bird->y<SCREEN_HEIGHT)
+    bool gameOver = false;
+    while (!gameOver)
     {
         SDL_SetRenderDrawColor(renderer, 255, 255, 255, 0);
+
         updateBird(renderer, bird, GRAVITY);
         updatePipe(renderer, *pipes[0], velocity);
         if (pipes[0]->upPipe.x < SCREEN_WIDTH/2)
@@ -52,6 +56,9 @@ int main(int argc, char* argv[])
             pipes[1] = pipes[2];
             pipes[2] = new Pipeline;
         }
+        gameOver = hitThePipes(bird, *pipes[0]);
+        if (bird->y + bird->h > SCREEN_HEIGHT) gameOver = true;
+
         updateRenderer(renderer);
     }
 
@@ -60,6 +67,15 @@ int main(int argc, char* argv[])
 	waitUntilKeyPressed();
     quitSDL(window, renderer);
     return 0;
+}
+
+bool hitThePipes(const SDL_Rect* bird,const Pipeline pipe)
+{
+    if (bird->x + bird->w >= pipe.downPipe.x && bird->y + bird->h >= pipe.downPipe.y && bird->x + bird->w <= pipe.downPipe.x + pipe.downPipe.w) return true;
+    if (bird->x <= pipe.downPipe.x + pipe.downPipe.w && bird->y + bird->h >= pipe.downPipe.y && bird->x >= pipe.downPipe.x) return true;
+    if (bird->x + bird->w >= pipe.upPipe.x && bird->y <= pipe.upPipe.y + pipe.upPipe.h && bird->x + bird->w <= pipe.upPipe.x + pipe.upPipe.w) return true;
+    if (bird->x >= pipe.upPipe.x && bird->y <= pipe.upPipe.y + pipe.upPipe.h && bird->x <= pipe.upPipe.x + pipe.upPipe.w) return true;
+    return false;
 }
 
 void updatePipe(SDL_Renderer* &renderer, Pipeline &pipe, const int velocity)

@@ -32,7 +32,10 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="init.cpp" />
+		<Unit filename="init.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="pipeline.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

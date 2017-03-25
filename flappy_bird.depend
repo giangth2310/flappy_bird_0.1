@@ -1,15 +1,15 @@
 # depslib dependency file v1.0
-1490456904 source:c:\users\msi\desktop\flappy_bird\main.cpp
+1490463477 source:c:\users\msi\desktop\flappy_bird\main.cpp
 	<bits/stdc++.h>
 	<SDL2/SDL.h>
 	"init.h"
 	"pipeline.h"
 
-1490456496 c:\users\msi\desktop\flappy_bird\init.h
+1490463398 c:\users\msi\desktop\flappy_bird\init.h
 
 1490456458 source:c:\users\msi\desktop\flappy_bird\init.cpp
 	<iostream>
 	<SDL2/SDL.h>
 
-1490456891 c:\users\msi\desktop\flappy_bird\pipeline.h
+1490463398 c:\users\msi\desktop\flappy_bird\pipeline.h
 
