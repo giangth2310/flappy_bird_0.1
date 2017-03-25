@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1490453652 source:c:\users\msi\desktop\flappy_bird\main.cpp
+	<bits/stdc++.h>
+	<SDL2/SDL.h>
+
