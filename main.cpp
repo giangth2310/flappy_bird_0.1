@@ -22,8 +22,6 @@ int main(int argc, char* argv[])
     SDL_Window* window;
     SDL_Renderer* renderer;
     initSDL(window, renderer);
-//    int a = 1;
-//    cout << a;
 
     // Your drawing code here
     SDL_Rect* bird;
@@ -37,6 +35,7 @@ int main(int argc, char* argv[])
     pipes[1] = new Pipeline;
     pipes[2] = new Pipeline;
     int velocity = 3;
+    //int score = 0;
 
     bool gameOver = false;
     while (!gameOver)
