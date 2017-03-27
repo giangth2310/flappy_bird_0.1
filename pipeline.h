@@ -6,14 +6,14 @@ struct Pipeline
     SDL_Rect upPipe, downPipe;
     Pipeline()
     {
-        upPipe.w = 100;
-        upPipe.h = rand()%(300);
         upPipe.x = SCREEN_WIDTH;
         upPipe.y = 0;
-        downPipe.w = 100;
-        downPipe.h = rand() % (300);
+        upPipe.w = 100;
+        upPipe.h = rand()%(250) + 50;
         downPipe.x = SCREEN_WIDTH;
-        downPipe.y = SCREEN_HEIGHT - downPipe.h;
+        downPipe.y = upPipe.h + 200 + rand()%100;
+        downPipe.w = 100;
+        downPipe.h = SCREEN_HEIGHT - downPipe.y;
     }
     SDL_Rect* get_UpPipe_Pointer()
     {
